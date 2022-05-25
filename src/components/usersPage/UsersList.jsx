@@ -1,8 +1,13 @@
+import {} from "../../store/user/userSlice";
+
 import { useEffect, useState } from "react";
 
 import axios from "axios";
+import { setUser } from "../../store/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const UsersList = () => {
+  const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -18,12 +23,23 @@ const UsersList = () => {
 
   const userDetail = (id) => {
     const user = users.find((x) => x.id === id);
-    console.log(user);
+    const { name, username, email, phone, website } = user;
+    dispatch(
+      setUser({
+        id,
+        name,
+        username,
+        email,
+        phone,
+        website,
+      })
+    );
   };
 
   return (
     <>
       <div>
+        <h1>Users</h1>
         <ul>
           {users.map((user) => (
             <li key={user.id}>
