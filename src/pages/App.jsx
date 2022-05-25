@@ -10,6 +10,9 @@ const App = () => {
             <li>
               <Link to="/counter">Counter</Link>
             </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
           </ul>
         </div>
       </div>

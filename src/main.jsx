@@ -7,6 +7,7 @@ import Counter from "./pages/Counter";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Users from "./pages/Users";
 import { store } from "./redux/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="counter" element={<Counter />} />
+        <Route path="users" element={<Users />} />
       </Routes>
     </BrowserRouter>
   </Provider>
