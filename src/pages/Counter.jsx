@@ -1,24 +1,40 @@
-import { decrement, increment } from "../store/counter/counterSlice";
+import { decrement, increment, reset } from "../store/counter/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
-import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Counter = () => {
-  const count = useSelector((state) => state.counter.value);
+  const [count, setCount] = useState(0);
+  const el = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    setCount(el);
+  }, [el]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(reset());
+    };
+  }, [location]);
 
   return (
     <>
-      <div>
-        <div>
+      <div className="flex flex-col m-10">
+        <h1 className="font-semibold mb-16 text-5xl">Counter</h1>
+        <div className="w-96 flex justify-between items-center">
           <button
+            className="btn btn-primary"
             aria-label="Increment value"
             onClick={() => dispatch(increment())}
           >
             Increment
           </button>
-          <span>{count}</span>
+          <span className="font-semibold text-xl">{count}</span>
           <button
+            className="btn btn-primary"
             aria-label="Decrement value"
             onClick={() => dispatch(decrement())}
           >

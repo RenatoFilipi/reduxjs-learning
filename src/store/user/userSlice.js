@@ -21,9 +21,18 @@ export const userSlice = createSlice({
       state.phone = action.payload.phone;
       state.website = action.payload.website;
     },
+
+    reset: (state) => {
+      state.id = 0;
+      state.name = "";
+      state.username = "";
+      state.email = "";
+      state.phone = "";
+      state.website = "";
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, reset } = userSlice.actions;
 
 export default userSlice.reducer;

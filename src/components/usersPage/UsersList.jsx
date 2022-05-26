@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 const UsersList = () => {
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
+  const [loading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const url = "https://jsonplaceholder.typicode.com/users";
@@ -16,6 +17,7 @@ const UsersList = () => {
     const fetchData = async () => {
       const { data } = await axios.get(url);
       setUsers(data);
+      setIsLoading(false);
     };
 
     fetchData().catch(console.error);
@@ -36,17 +38,42 @@ const UsersList = () => {
     );
   };
 
+  if (loading) {
+    return (
+      <>
+        <progress class="progress w-56"></progress>
+      </>
+    );
+  }
+
   return (
     <>
-      <div>
-        <h1>Users</h1>
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>
-              <button onClick={() => userDetail(user.id)}>{user.name}</button>
-            </li>
-          ))}
-        </ul>
+      <div className="overflow-x-auto">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <th>{user.id}</th>
+                <td>{user.name}</td>
+                <th>
+                  <button
+                    className="btn btn-ghost btn-xs"
+                    onClick={() => userDetail(user.id)}
+                  >
+                    details
+                  </button>
+                </th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );

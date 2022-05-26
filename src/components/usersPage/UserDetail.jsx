@@ -12,13 +12,11 @@ const UserDetail = () => {
 
   return (
     <>
-      <div>
-        <div>Details</div>
+      <div className="">
         {user.id === 0 ? (
-          "no user selected"
+          ""
         ) : (
-          <div>
-            <div>{user.id}</div>
+          <div className="flex flex-col gap-6 font-semibold">
             <div>{user.name}</div>
             <div>{user.username}</div>
             <div>{user.email}</div>
