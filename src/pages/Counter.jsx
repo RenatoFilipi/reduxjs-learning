@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import Footer from "../components/shared/Footer";
+import Navbar from "../components/shared/Navbar";
 import { useLocation } from "react-router-dom";
 
 const Counter = () => {
@@ -24,6 +25,7 @@ const Counter = () => {
   return (
     <>
       <div className="flex flex-col h-screen">
+        <Navbar />
         <div className="flex flex-col m-10 flex-grow">
           <h1 className="font-semibold mb-16 text-5xl">Counter</h1>
           <div className="w-96 flex justify-between items-center">

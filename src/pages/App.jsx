@@ -1,13 +1,15 @@
 import Footer from "../components/shared/Footer";
 import { Link } from "react-router-dom";
+import Navbar from "../components/shared/Navbar";
 import Paths from "../utils/paths";
 
 const App = () => {
   return (
     <>
       <div className="flex flex-col h-screen">
+        <Navbar />
         <div className="flex flex-col m-10 flex-grow">
-          <h1 className="font-semibold mb-16 text-5xl">Redux Demos</h1>
+          <h1 className="font-semibold mb-16 text-5xl">Demos</h1>
           <div>
             <ul className="flex gap-8">
               {Paths.map((path, index) => (
