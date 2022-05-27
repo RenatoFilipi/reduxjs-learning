@@ -41,7 +41,7 @@ const UsersList = () => {
   if (loading) {
     return (
       <>
-        <progress class="progress w-56"></progress>
+        <progress className="progress w-56"></progress>
       </>
     );
   }
