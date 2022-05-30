@@ -10,11 +10,11 @@ const App = () => {
         <Navbar />
         <div className="flex flex-col m-10 flex-grow">
           <h1 className="font-semibold mb-16 text-5xl">Demos</h1>
-          <div>
-            <ul className="flex gap-8">
+          <div className="">
+            <ul className="flex gap-8 flex-wrap justify-center lg:justify-start">
               {Paths.map((path, index) => (
                 <li key={index}>
-                  <div className="card w-96 h-52 bg-base-100 border-2">
+                  <div className="card  w-full lg:w-96 h-52 bg-base-100 border-2">
                     <div className="card-body">
                       <h2 className="card-title">{path.title}</h2>
                       <p>{path.description}</p>
